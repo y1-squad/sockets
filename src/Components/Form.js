@@ -17,7 +17,7 @@ const Form = () => {
           type="username"
           name="username"
           onChange={handleChange}
-          value={values.email}
+          value={values.username}
           required
         />
           <button type="submit" className="button">
