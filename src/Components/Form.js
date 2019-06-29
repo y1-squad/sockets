@@ -1,28 +1,29 @@
 import React from "react";
-import useForm from "./useForm";
-
+import UserForm from "./UserForm";
 
 const Form = () => {
-    const { values, handleChange, handleSubmit } = useForm();
+  const { values, handleChange, handleSubmit } = UserForm(login);
 
-
-function login() {
-  console.log(values);
-}
+  function login() {
+    console.log(values);
+  }
 
   return (
     <div className="container">
-      <div className="box">
-        <form onSubmit={handleSubmit}>
-          <label className="label">Username</label>
-          <div className="control">
-            <input className="input" type="username" name="username" onChange={handleChange} value={values.username} required  />
-          </div>
+      <form onSubmit={handleSubmit}>
+        <label className="label">Username</label>
+        <input
+          className="input"
+          type="username"
+          name="username"
+          onChange={handleChange}
+          value={values.username}
+          required
+        />
           <button type="submit" className="button">
             Login
-          </button> 
-        </form>
-      </div>
+          </button>
+      </form>
     </div>
   );
 };
