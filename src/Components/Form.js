@@ -1,28 +1,27 @@
-import React from "react";
-import UserForm from "./UserForm";
+import React, {useState} from "react";
+import {useDispatch, useSelector} from 'react-redux'
+import {setUsername} from '../redux/reducers/userReducer'
 
 const Form = () => {
-  const { values, handleChange, handleSubmit } = UserForm(login);
-
-  function login() {
-    console.log(values);
-  }
-
+  const [username, setUser] = useState('')
+  const dispatch = useDispatch()
+  const user = useSelector(reduxState => reduxState.user)
   return (
     <div className="container">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={e => e.preventDefault()}>
         <label className="label">Username</label>
         <input
           className="input"
           type="username"
           name="username"
-          onChange={handleChange}
-          value={values.username}
+          onChange={setUser}
+          value={username}
           required
         />
-          <button type="submit" className="button">
+          <button type="submit" className="button" onClick={() => dispatch(setUsername(username))}>
             Login
           </button>
+        <p>{user.username}</p>
       </form>
     </div>
   );
