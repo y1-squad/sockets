@@ -1,5 +1,5 @@
 const socket = require('socket.io')
-
+const messages = []
 const SocketConnection = (server) => {
     const io = socket(server)
 
