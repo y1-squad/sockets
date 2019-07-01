@@ -1,11 +1,14 @@
 import React, {useState} from "react";
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import {setUsername} from '../redux/reducers/userReducer'
 
-const Form = () => {
+const Form = (props) => {
   const [username, setUser] = useState('')
   const dispatch = useDispatch()
-  const user = useSelector(reduxState => reduxState.user)
+  function login() {
+    dispatch(setUsername(username))
+    props.history.push('/room')
+  }
   return (
     <div className="container">
       <form onSubmit={e => e.preventDefault()}>
@@ -14,14 +17,13 @@ const Form = () => {
           className="input"
           type="username"
           name="username"
-          onChange={setUser}
+          onChange={e => setUser(e.target.value)}
           value={username}
           required
         />
-          <button type="submit" className="button" onClick={() => dispatch(setUsername(username))}>
+          <button type="submit" className="button" onClick={login}>
             Login
           </button>
-        <p>{user.username}</p>
       </form>
     </div>
   );

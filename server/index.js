@@ -19,4 +19,4 @@ const server = app.listen(SERVER_PORT, () => {
 SocketConnection(server)
 
 app.post('/user', r_ctrl.createUser)
-app.post('/room/create', r_ctrl.checkUser, r_ctrl.createRoom)
+app.post('/room/create', r_ctrl.createRoom)

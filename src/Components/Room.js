@@ -11,18 +11,18 @@ export default function Room(props) {
     axios.post('/room/create', {username: user.username})
     .then(res => {
       dispatch(setRoomID(res.data))
-      props.history.push('/room')
+      props.history.push('/chat')
     })
   }
   function joinRoom() {
-    props.history.push('/room')
+    props.history.push('/chat')
   }
   return (
       <div>
         {roomJoin ?
           <form onSubmit={e => e.preventDefault()}>
-            <input type='text' onChange={e => useDispatch(setRoomID(e.target.value))} />
-            <button>Join Room</button>
+            <input type='text' onChange={e => dispatch(setRoomID(e.target.value))} />
+            <button onClick={joinRoom}>Join Room</button>
           </form>
           :
           <div>

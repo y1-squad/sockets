@@ -33,7 +33,7 @@ export const setUsername = (username) => {
 export const setRoomID = (roomID) => {
     console.log(roomID)
     return {
-        type: setRoomID,
+        type: SET_ROOMID,
         payload: roomID
     }
 }
